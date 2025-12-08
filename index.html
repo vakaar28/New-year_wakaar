@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026 ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Use transform for animation where possible (Performance Improvement) */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #667eea, #764ba2);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Particles Background - Optimized for minimal CSS property change (only transform) */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float linear infinite;
+            /* Use translate3d for hardware acceleration */
+            will-change: transform, opacity; 
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                /* Use translate3d for smooth 3D-accelerated movement */
+                transform: translate3d(100px, -100vh, 0) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Fireworks - Optimized for minimal CSS property change (only transform) */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: explode 2s ease-out infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                /* Use translate3d */
+                transform: translate3d(var(--x), var(--y), 0) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container - Backdrop blur reduced from 20px to 10px */
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px); /* Reduced blur for performance */
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), /* Simplified shadow */
+                        inset 0 0 30px rgba(255, 255, 255, 0.05); /* Simplified inset */
+            max-width: 700px;
+            width: 100%;
+            padding: 60px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: floatCard 6s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translate3d(0, 0px, 0) rotate(0deg); }
+            50% { transform: translate3d(0, -20px, 0) rotate(1deg); }
+        }
+
+        /* Glass Orbs - Removed heavy 'filter: blur' */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent);
+            /* filter: blur(40px); <-- REMOVED for better performance */
+            animation: orbFloat 10s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .orb1 {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            left: -50px;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(30px, 30px, 0) scale(1.1); }
+        }
+
+        /* Year Design - Reduced drop-shadow intensity */
+        .year-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .year {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF69B4, #00FFFF, #FFD700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowText 4s ease infinite, pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); /* Shadow reduced */
+            letter-spacing: 10px;
+            will-change: transform, filter;
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Star Decorations - Reduced drop-shadow intensity */
+        .star {
+            position: absolute;
+            color: #FFD700;
+            font-size: 30px;
+            animation: twinkle 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px #FFD700); /* Shadow reduced */
+            will-change: transform, opacity;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.5; transform: scale(1.2) rotate(180deg); }
+        }
+
+        .greeting {
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            /* Text-shadow optimized by removing one layer, keeping the most important one */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                         0 5px 10px rgba(0, 0, 0, 0.3); 
+            animation: glow 2s ease-in-out infinite;
+            letter-spacing: 3px;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 215, 0, 1); }
+        }
+
+        /* Sender Message */
+        .sender-message {
+            font-size: 24px;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(8px); /* Reduced blur for performance */
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Reduced shadow intensity */
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sender-name {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 32px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); /* Reduced shadow */
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Input Section */
+        .input-section {
+            margin: 40px 0;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 22px 30px;
+            font-size: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.4s;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Reduced shadow */
+        }
+
+        .input-box:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 8px 30px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 22px 60px;
+            font-size: 20px;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            margin: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Reduced shadow */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            will-change: transform, box-shadow;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF);
+            background-size: 300% 300%;
+            color: white;
+            animation: gradientBtn 3s ease infinite;
+        }
+
+        @keyframes gradientBtn {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03); /* Reduced transform distance */
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4); /* Reduced shadow intensity */
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            display: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px) scale(1.03); /* Reduced transform distance */
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4); /* Reduced shadow intensity */
+        }
+
+        /* Message Box - Backdrop blur reduced from 10px to 8px */
+        .message {
+            font-size: 20px;
+            line-height: 2;
+            color: #FFFFFF;
+            margin: 40px 0;
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(8px); /* Reduced blur for performance */
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25); /* Reduced shadow */
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+            font-weight: 500;
+        }
+
+        /* Music Indicator */
+        .music-indicator {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5); /* Reduced shadow */
+            animation: musicPulse 1.5s ease-in-out infinite;
+            z-index: 1000;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            will-change: transform, box-shadow;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                transform: scale(1.05); /* Reduced scale */
+                box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+            }
+        }
+
+        .music-icon {
+            color: white;
+            font-size: 32px;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Countdown/Message Box Styles - Reduced blur and shadow */
+        .main-card {
+            width: 100%;
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(10px); /* Reduced blur */
+            border-radius:35px;
+            padding:35px;
+            text-align:center;
+            border:2px solid rgba(255,255,255,0.25);
+            box-shadow:0 0 20px rgba(255,255,255,0.15); /* Reduced shadow */
+            animation:fade 1.8s ease-in-out;
+            margin-top: 30px;
+        }
+
+        .main-card h1 {
+            font-size:62px;
+            background: linear-gradient(45deg, #ffeb3b, #ff9800, #ff3d00);
+            -webkit-background-clip:text;
+            background-clip: text;
+            color:transparent;
+            font-weight:800;
+            letter-spacing:2px;
+            text-shadow:0 0 20px #ffe600; /* Reduced shadow */
+            animation: glow 1.5s infinite alternate;
+            margin-bottom: 10px;
+        }
+
+        @keyframes glow{
+            from{text-shadow:0 0 8px #ffdf00;}
+            to{text-shadow:0 0 25px #ffd600;}
+        }
+
+        #nyText {
+            font-size:28px;
+            font-weight:600;
+            color: #FFFFFF;
+            animation: pop 1.6s infinite alternate;
+        }
+
+        @keyframes pop{
+            from{transform:scale(0.98);} /* Reduced scale for subtler animation */
+            to{transform:scale(1.02);} /* Reduced scale for subtler animation */
+        }
+
+        .countBox {
+            margin-top:25px;
+            display:flex;
+            justify-content:space-between;
+            gap:10px;
+            width:100%;
+        }
+
+        .box {
+            background:linear-gradient(135deg,#fff,#ffd369);
+            flex-grow: 1;
+            height:90px;
+            border-radius:18px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            font-size:24px;
+            font-weight:800;
+            color:#ff6f00;
+            box-shadow:0 0 10px rgba(255,255,255,0.4); /* Reduced shadow */
+            min-width: 60px;
+        }
+
+        .box span {
+            font-size:14px;
+            color:#000;
+            font-weight:700;
+            margin-top: 5px;
+        }
+        
+        /* New Wishing Text Style */
+        .wishing-text {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #FFFFFF;
+            padding: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Reduced shadow */
+        }
+        
+        /* Footer Adjustment for better visibility */
+        footer {
+            width:100%;
+            text-align:center;
+            padding:12px;
+            font-size:15px;
+            color:#fff;
+            text-shadow:0 0 8px #00ffd5;
+            background:linear-gradient(135deg,#1e9ebf,#00c39a);
+            border-top:2px solid rgba(255,255,255,0.4);
+            position:fixed;
+            bottom:0;
+            left:0;
+            z-index: 999; /* Ensure footer stays above everything else */
+        }
+
+
+        /* Mobile Responsive (max-width: 600px) */
+        @media (max-width: 600px) {
+            .year { 
+                font-size: 70px; /* Further reduced font size */
+                letter-spacing: 3px;
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)); 
+            }
+            .greeting { 
+                font-size: 28px; /* Further reduced font size */
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); 
+            }
+            .container { 
+                padding: 30px 20px; /* Reduced padding */
+                backdrop-filter: blur(6px); 
+                margin-bottom: 80px; /* Add space for fixed footer */
+            }
+            
+            /* Button adjustment: Full width and block display for mobile stacking */
+            .btn { 
+                padding: 15px 30px; 
+                font-size: 16px; 
+                display: block;
+                width: 90%;
+                margin: 15px auto;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+            }
+            
+            .message { 
+                font-size: 16px; 
+                padding: 25px;
+                backdrop-filter: blur(6px); 
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); 
+            }
+            .sender-name { font-size: 24px; }
+            .music-indicator { 
+                width: 50px; /* Reduced size */
+                height: 50px; 
+                bottom: 10px; 
+                right: 10px; 
+                box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4); 
+            }
+            .music-icon { font-size: 20px; }
+            .box { 
+                height: 55px; /* Reduced height */
+                font-size: 18px; /* Reduced font size */
+                min-width: auto;
+                margin: 0;
+            }
+            .box span { font-size: 10px;}
+            .main-card h1 { font-size: 45px; }
+            #nyText { font-size: 20px; }
+            .wishing-text { font-size: 18px; }
+            
+            /* Ensure the countbox handles small screens well */
+            .countBox {
+                gap: 5px;
+            }
+        }
+        
+        /* Tablet/Small Laptop Responsive (601px to 900px) */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .container {
+                max-width: 650px;
+                padding: 50px 40px;
+            }
+            .year {
+                font-size: 100px;
+            }
+            .greeting {
+                font-size: 38px;
+            }
+            .box {
+                height: 80px;
+                font-size: 22px;
+            }
+            .btn {
+                padding: 20px 50px;
+                font-size: 18px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="2025.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <div class="container">
+        <div class="year-container">
+            <span class="star" style="top: 10px; left: 20px;">✨</span>
+            <span class="star" style="top: 10px; right: 20px; animation-delay: 0.5s;">⭐</span>
+            <span class="star" style="bottom: 10px; left: 40px; animation-delay: 1s;">🌟</span>
+            <span class="star" style="bottom: 10px; right: 40px; animation-delay: 1.5s;">💫</span>
+            <div class="year">2026</div>
+        </div>
+        
+        <div class="greeting">🎊 Happy New Year! 🎉</div>
+        
+        <div class="sender-message" id="senderMessage">
+            <span class="sender-name" id="senderName"></span>
+            ने आपको नए साल की ढेर सारी शुभकामनाएं भेजी हैं! 🎆✨
+        </div>
+
+        <div class="input-section" id="inputSection">
+            <input type="text" class="input-box" id="nameInput" placeholder="✨ अपना नाम दर्ज करें ✨">
+            <button class="btn btn-primary" onclick="generateCard()">🌟 Card बनाएं</button>
+        </div>
+
+        <div class="main-card" id="countdownContainer">
+            <h1>2026 ✨</h1>
+            <div id="nyText">नया साल आने में... 🎉</div>
+
+            <div class="countBox">
+                <div class="box" id="days">0<span>दिन</span></div>
+                <div class="box" id="hours">0<span>घंटे</span></div>
+                <div class="box" id="minutes">0<span>मिनट</span></div>
+                <div class="box" id="seconds">0<span>सेकंड</span></div>
+            </div>
+        </div>
+
+        <div class="main-card" id="messageContainer" style="display:none;">
+            <h1>2026 ✨</h1>
+            <div id="nyText">नव वर्ष की हार्दिक शुभकामनाएं! 🎉</div>
+            
+            <div class="wishing-text">
+                 2026 में तो दुनिया ही ख़त्म इसके लिए 2025  में पहले विशिंग विशिंग खेल लो🤣🤣🤣🤣
+            </div>
+        </div>
+
+
+        <button class="btn btn-whatsapp" id="shareBtn" onclick="shareOnWhatsApp()">
+            📱 WhatsApp पर Share करें
+        </button>
+    </div>
+
+    <div class="music-indicator">
+        <div class="music-icon">🎵</div>
+    </div>
+
+    <script>
+        // --- COUNTDOWN LOGIC (FOR MAIN PAGE) ---
+        function countdown(){
+            // Target is Jan 1, 2026
+            const target = new Date("Jan 1, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff < 0) {
+                // If the new year has passed
+                document.getElementById("nyText").textContent = "नया साल मुबारक हो! 🎉";
+                document.getElementById("days").innerHTML = "0<span>दिन</span>";
+                document.getElementById("hours").innerHTML = "0<span>घंटे</span>";
+                document.getElementById("minutes").innerHTML = "0<span>मिनट</span>";
+                document.getElementById("seconds").innerHTML = "0<span>सेकंड</span>";
+                return;
+            }
+
+            let d = Math.floor(diff / (1000*60*60*24));
+            let h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+            let m = Math.floor((diff % (1000*60*60)) / (1000*60));
+            let s = Math.floor((diff % (1000*60)) / 1000);
+
+            document.getElementById("days").innerHTML = d + "<span>दिन</span>";
+            document.getElementById("hours").innerHTML = h + "<span>घंटे</span>";
+            document.getElementById("minutes").innerHTML = m + "<span>मिनट</span>";
+            document.getElementById("seconds").innerHTML = s + "<span>सेकंड</span>";
+        }
+
+        function initCountdown() {
+             // Only start countdown if the messageContainer is hidden (i.e., we are on the main page)
+            if (document.getElementById('messageContainer').style.display === 'none') {
+                countdown();
+                setInterval(countdown, 1000);
+            }
+        }
+        initCountdown(); // Start countdown on load
+
+        // --- NEW AUDIO PLAYER LOGIC ---
+        let isMusicStarted = false;
+        const bgMusic = document.getElementById('backgroundMusic');
+
+        function startMusic() {
+            // Check if the music is already playing or if the audio element exists
+            if (bgMusic && !isMusicStarted) {
+                // Try to play the actual audio file
+                bgMusic.play().then(() => {
+                    isMusicStarted = true;
+                }).catch(error => {
+                    // Autoplay was prevented (standard browser behavior). Music will start on user interaction.
+                    console.log("Autoplay failed:", error);
+                    isMusicStarted = false; // Keep trying until user interacts
+                });
+            }
+        }
+
+        // Auto-start music on any user interaction (browser policy)
+        document.addEventListener('click', startMusic, { once: false });
+        document.addEventListener('touchstart', startMusic, { once: false });
+        document.addEventListener('keydown', startMusic, { once: false });
+
+        window.addEventListener('load', () => {
+            // Attempt to start music immediately after load
+            setTimeout(startMusic, 100);
+        });
+
+        // --- PAGE EFFECTS (Particles, Fireworks) ---
+
+        // Create particles - REDUCED COUNT (50 to 25) for better performance
+        function createParticles() {
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's'; /* Slightly longer duration for subtler effect */
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Create fireworks - REDUCED FREQUENCY (800ms to 1500ms) for better performance
+        function createFirework() {
+            const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#FF69B4', '#00FFFF', '#FFD700'];
+            for (let i = 0; i < 8; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / 8;
+                const distance = 100 + Math.random() * 50;
+                firework.style.setProperty('--x', Math.cos(angle) * distance + 'px');
+                firework.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+                
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 2000);
+            }
+        }
+        setInterval(createFirework, 1500); /* Adjusted interval for performance */
+
+        // --- CARD GENERATION AND SHARE LOGIC ---
+
+        // URL parameter check
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sender = urlParams.get('from');
+            
+            if (sender) {
+                document.getElementById('senderName').textContent = decodeURIComponent(sender);
+                document.getElementById('senderMessage').style.display = 'block';
+                document.getElementById('inputSection').style.display = 'none';
+                
+                // Show the wishing text and hide countdown when shared link is opened
+                document.getElementById('countdownContainer').style.display = 'none';
+                document.getElementById('messageContainer').style.display = 'block';
+            } else {
+                 // Ensure countdown is visible on the main page
+                 document.getElementById('countdownContainer').style.display = 'block';
+                 document.getElementById('messageContainer').style.display = 'none';
+            }
+        });
+
+        let userName = '';
+
+        function generateCard() {
+            userName = document.getElementById('nameInput').value.trim();
+            
+            if (userName === '') {
+                alert('कृपया अपना नाम दर्ज करें! ✨');
+                return;
+            }
+
+            // 1. Hide Input
+            document.getElementById('inputSection').style.display = 'none';
+            
+            // 2. Show Share Button
+            document.getElementById('shareBtn').style.display = 'inline-block';
+
+            // 3. Hide Countdown and Show Wishing Text
+            document.getElementById('countdownContainer').style.display = 'none';
+            document.getElementById('messageContainer').style.display = 'block';
+            
+            // 4. Ensure music is playing (this will start on button click)
+            startMusic(); 
+        }
+
+        function shareOnWhatsApp() {
+            if (userName === '') {
+                alert('पहले अपना नाम दर्ज करें! 🎊');
+                return;
+            }
+
+            const currentUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${currentUrl}?from=${encodeURIComponent(userName)}`;
+            const message = `🎊✨ ${userName} ने आपको Happy New Year 2026 की ढेर सारी शुभकामनाएं भेजी हैं! 🎉🎆\n\n🌟 अपना Special Card यहाँ देखें: ${shareUrl}\n\n💫 नए साल की हार्दिक शुभकामनाएं!`;
+            
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+<footer>
+  ✨ © 2025 Vakaar • All Rights Reserved ✨
+</footer>
+</body>
+</html>
