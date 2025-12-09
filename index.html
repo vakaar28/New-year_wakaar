@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026 ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #667eea, #764ba2);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            padding: 60px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+            pointer-events: none;
+        }
+
+        .orb1 {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            left: -50px;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .year-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .year {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF69B4, #00FFFF, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowText 5s ease infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+            letter-spacing: 10px;
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .star {
+            position: absolute;
+            color: #FFD700;
+            font-size: 30px;
+            animation: twinkle 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px #FFD700);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.1); }
+        }
+
+        .greeting {
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+                         0 5px 10px rgba(0, 0, 0, 0.3); 
+            letter-spacing: 3px;
+        }
+
+        .sender-message {
+            font-size: 24px;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(6px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.6s ease-out;
+            opacity: 0;
+        }
+
+        .sender-message.show {
+            display: block;
+            opacity: 1;
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .sender-name {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 32px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-section {
+            margin: 40px 0;
+            transition: all 0.4s ease;
+            opacity: 1;
+        }
+
+        .input-section.hide {
+            opacity: 0;
+            transform: translateY(-15px);
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 22px 30px;
+            font-size: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .input-box:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .btn {
+            padding: 22px 60px;
+            font-size: 20px;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF);
+            background-size: 200% 200%;
+            color: white;
+            animation: gradientBtn 4s ease infinite;
+        }
+
+        @keyframes gradientBtn {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            display: none;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn-whatsapp.show {
+            display: inline-block;
+            opacity: 1;
+            animation: bounceIn 0.5s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .music-indicator {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            z-index: 1000;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .music-icon {
+            color: white;
+            font-size: 28px;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .main-card {
+            width: 100%;
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(8px);
+            border-radius:35px;
+            padding:35px;
+            text-align:center;
+            border:2px solid rgba(255,255,255,0.25);
+            box-shadow:0 0 15px rgba(255,255,255,0.1);
+            animation:fadeIn 0.6s ease-in-out;
+            margin-top: 30px;
+            transition: all 0.4s ease;
+            opacity: 1;
+        }
+
+        .main-card.hide {
+            opacity: 0;
+            transform: scale(0.98) translateY(-15px);
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-card h1 {
+            font-size:62px;
+            background: linear-gradient(45deg, #ffeb3b, #ff9800, #ff3d00);
+            -webkit-background-clip:text;
+            background-clip: text;
+            color:transparent;
+            font-weight:800;
+            letter-spacing:2px;
+            margin-bottom: 10px;
+        }
+
+        #nyText {
+            font-size:28px;
+            font-weight:600;
+            color: #FFFFFF;
+        }
+
+        .countBox {
+            margin-top:25px;
+            display:flex;
+            justify-content:space-between;
+            gap:10px;
+            width:100%;
+        }
+
+        .box {
+            background:linear-gradient(135deg,#fff,#ffd369);
+            flex-grow: 1;
+            height:90px;
+            border-radius:18px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            font-size:24px;
+            font-weight:800;
+            color:#ff6f00;
+            box-shadow:0 0 8px rgba(255,255,255,0.3);
+            min-width: 60px;
+            transition: transform 0.2s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-3px);
+        }
+
+        .box span {
+            font-size:14px;
+            color:#000;
+            font-weight:700;
+            margin-top: 5px;
+        }
+        
+        .wishing-text {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #FFFFFF;
+            padding: 20px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+        
+        footer {
+            width:100%;
+            text-align:center;
+            padding:12px;
+            font-size:15px;
+            color:#fff;
+            text-shadow:0 0 8px #00ffd5;
+            background:linear-gradient(135deg,#1e9ebf,#00c39a);
+            border-top:2px solid rgba(255,255,255,0.4);
+            position:fixed;
+            bottom:0;
+            left:0;
+            z-index: 999;
+        }
+
+        @media (max-width: 600px) {
+            .year { 
+                font-size: 70px;
+                letter-spacing: 3px;
+                filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.4)); 
+            }
+            .greeting { 
+                font-size: 28px;
+                text-shadow: 0 0 12px rgba(255, 255, 255, 0.6); 
+            }
+            .container { 
+                padding: 30px 20px;
+                backdrop-filter: blur(5px); 
+                margin-bottom: 80px;
+            }
+            
+            .btn { 
+                padding: 15px 30px; 
+                font-size: 16px; 
+                display: block;
+                width: 90%;
+                margin: 15px auto;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+            }
+            
+            .sender-name { font-size: 24px; }
+            .sender-message { font-size: 18px; padding: 20px; }
+            .music-indicator { 
+                width: 50px;
+                height: 50px; 
+                bottom: 10px; 
+                right: 10px; 
+                box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3); 
+            }
+            .music-icon { font-size: 20px; }
+            .box { 
+                height: 55px;
+                font-size: 18px;
+                min-width: auto;
+                margin: 0;
+            }
+            .box span { font-size: 10px;}
+            .main-card h1 { font-size: 45px; }
+            #nyText { font-size: 20px; }
+            .wishing-text { font-size: 18px; }
+            
+            .countBox {
+                gap: 5px;
+            }
+        }
+        
+        @media (min-width: 601px) and (max-width: 900px) {
+            .container {
+                max-width: 650px;
+                padding: 50px 40px;
+            }
+            .year {
+                font-size: 100px;
+            }
+            .greeting {
+                font-size: 38px;
+            }
+            .box {
+                height: 80px;
+                font-size: 22px;
+            }
+            .btn {
+                padding: 20px 50px;
+                font-size: 18px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="2025.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <div class="container">
+        <div class="year-container">
+            <span class="star" style="top: 10px; left: 20px;">✨</span>
+            <span class="star" style="top: 10px; right: 20px; animation-delay: 0.5s;">⭐</span>
+            <span class="star" style="bottom: 10px; left: 40px; animation-delay: 1s;">🌟</span>
+            <span class="star" style="bottom: 10px; right: 40px; animation-delay: 1.5s;">💫</span>
+            <div class="year">2026</div>
+        </div>
+        
+        <div class="greeting">🎊 Happy New Year! 🎉</div>
+        
+        <div class="sender-message" id="senderMessage">
+            <span class="sender-name" id="senderName"></span>
+            ने आपको नए साल की ढेर सारी शुभकामनाएं भेजी हैं! 🎆✨
+        </div>
+
+        <div class="input-section" id="inputSection">
+            <input type="text" class="input-box" id="nameInput" placeholder="✨ अपना नाम दर्ज करें ✨">
+            <button class="btn btn-primary" onclick="generateCard()">🌟 Card बनाएं</button>
+        </div>
+
+        <div class="main-card" id="countdownContainer">
+            <h1>2026 ✨</h1>
+            <div id="nyText">नया साल आने में... 🎉</div>
+
+            <div class="countBox">
+                <div class="box" id="days">0<span>दिन</span></div>
+                <div class="box" id="hours">0<span>घंटे</span></div>
+                <div class="box" id="minutes">0<span>मिनट</span></div>
+                <div class="box" id="seconds">0<span>सेकंड</span></div>
+            </div>
+        </div>
+
+        <div class="main-card hide" id="messageContainer">
+            <h1>2026 ✨</h1>
+            <div id="nyText">नव वर्ष की हार्दिक शुभकामनाएं! 🎉</div>
+            
+            <div class="wishing-text">
+                 2026 में तो दुनिया ही ख़त्म इसके लिए 2025  में पहले विशिंग विशिंग खेल लो🤣🤣🤣🤣
+            </div>
+        </div>
+
+        <button class="btn btn-whatsapp" id="shareBtn" onclick="shareOnWhatsApp()">
+            📱 WhatsApp पर Share करें
+        </button>
+    </div>
+
+    <div class="music-indicator">
+        <div class="music-icon">🎵</div>
+    </div>
+
+    <script>
+        function countdown(){
+            const target = new Date("Jan 1, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff < 0) {
+                document.getElementById("nyText").textContent = "नया साल मुबारक हो! 🎉";
+                document.getElementById("days").innerHTML = "0<span>दिन</span>";
+                document.getElementById("hours").innerHTML = "0<span>घंटे</span>";
+                document.getElementById("minutes").innerHTML = "0<span>मिनट</span>";
+                document.getElementById("seconds").innerHTML = "0<span>सेकंड</span>";
+                return;
+            }
+
+            let d = Math.floor(diff / (1000*60*60*24));
+            let h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+            let m = Math.floor((diff % (1000*60*60)) / (1000*60));
+            let s = Math.floor((diff % (1000*60)) / 1000);
+
+            document.getElementById("days").innerHTML = d + "<span>दिन</span>";
+            document.getElementById("hours").innerHTML = h + "<span>घंटे</span>";
+            document.getElementById("minutes").innerHTML = m + "<span>मिनट</span>";
+            document.getElementById("seconds").innerHTML = s + "<span>सेकंड</span>";
+        }
+
+        function initCountdown() {
+            countdown();
+            setInterval(countdown, 1000);
+        }
+        
+        let isMusicStarted = false;
+        const bgMusic = document.getElementById('backgroundMusic');
+
+        function startMusic() {
+            if (bgMusic && !isMusicStarted) {
+                bgMusic.play().then(() => {
+                    isMusicStarted = true;
+                }).catch(error => {
+                    console.log("Autoplay failed:", error);
+                    isMusicStarted = false;
+                });
+            }
+        }
+
+        document.addEventListener('click', startMusic, { once: false });
+        document.addEventListener('touchstart', startMusic, { once: false });
+
+        window.addEventListener('load', () => {
+            setTimeout(startMusic, 100);
+        });
+
+        // Reduced particles for better performance
+        function createParticles() {
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Reduced firework frequency
+        function createFirework() {
+            const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#FF69B4', '#00FFFF', '#FFD700'];
+            for (let i = 0; i < 6; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / 6;
+                const distance = 80 + Math.random() * 40;
+                firework.style.setProperty('--x', Math.cos(angle) * distance + 'px');
+                firework.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+                
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1500);
+            }
+        }
+        setInterval(createFirework, 2000);
+
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sender = urlParams.get('from');
+            
+            if (sender) {
+                document.getElementById('senderName').textContent = decodeURIComponent(sender);
+                const senderMsg = document.getElementById('senderMessage');
+                setTimeout(() => {
+                    senderMsg.classList.add('show');
+                }, 300);
+                
+                document.getElementById('countdownContainer').classList.remove('hide');
+                document.getElementById('messageContainer').classList.add('hide');
+            } else {
+                document.getElementById('countdownContainer').classList.remove('hide');
+                document.getElementById('messageContainer').classList.add('hide');
+            }
+            
+            initCountdown();
+        });
+
+        let userName = '';
+
+        function generateCard() {
+            userName = document.getElementById('nameInput').value.trim();
+            
+            if (userName === '') {
+                alert('कृपया अपना नाम दर्ज करें! ✨');
+                return;
+            }
+
+            const inputSection = document.getElementById('inputSection');
+            const countdownContainer = document.getElementById('countdownContainer');
+            const messageContainer = document.getElementById('messageContainer');
+            const shareBtn = document.getElementById('shareBtn');
+            
+            inputSection.classList.add('hide');
+            
+            setTimeout(() => {
+                countdownContainer.classList.add('hide');
+            }, 250);
+            
+            setTimeout(() => {
+                messageContainer.classList.remove('hide');
+                shareBtn.classList.add('show');
+            }, 500);
+            
+            startMusic(); 
+        }
+
+        function shareOnWhatsApp() {
+            if (userName === '') {
+                alert('पहले अपना नाम दर्ज करें! 🎊');
+                return;
+            }
+
+            const currentUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${currentUrl}?from=${encodeURIComponent(userName)}`;
+            const message = `🎊✨ ${userName} ने आपको Happy New Year 2026 की ढेर सारी शुभकामनाएं भेजी हैं! 🎉🎆\n\n🌟 अपना Special Card यहाँ देखें: ${shareUrl}\n\n💫 नए साल की हार्दिक शुभकामनाएं!`;
+            
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+<footer>
+  ✨ © 2025 Vakaar • All Rights Reserved ✨
+</footer>
+</body>
+</html>
